@@ -1,0 +1,20 @@
+{
+  "name": "diploma_glo_js23",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch --mode=development",   
+    "start": "webpack serve --mode=development --open", 
+    "server": "json-server db/db.json --port=4545"
+  },
+  "author": "Gala Slesareva",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
