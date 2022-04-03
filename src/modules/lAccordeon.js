@@ -1,8 +1,6 @@
 /* Лендинг. Часто задаваемые вопросы */
 "use strict";
 
-import { animate } from './helpers';
-
 export const accordeon = () => {
 
   // ссылки на клавиши аккордеона

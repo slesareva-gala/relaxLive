@@ -45,7 +45,7 @@ export const repairFull = (pathData) => {
     switchInner.textContent = block.textContent;
     // отбираем данные
     document.dataRepairFull.filter(`type=${block.textContent}`).then(data => {
-      render(data);
+      render(data.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)));
     });
   };
 

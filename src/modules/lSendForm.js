@@ -9,9 +9,9 @@ export class SendForm {
     this._dataForm = new DataJSON({
       url: url,
       errorMessageResponse: errorMessageResponse,
-      headers: {
+      /*headers: {
         "Content-Type": "multipart/json"
-      }
+      }*/
     });
     this._optionals = optionals;
   }
@@ -21,7 +21,7 @@ export class SendForm {
 
     let name = form.querySelector('.feedback-block__form-input_name');
     const check = form.querySelector('.checkbox__input');
-    
+
 
     // валидация данных форм
     const validate = (formBody) => {
