@@ -9,6 +9,7 @@ export const formula = () => {
   const slides = formula.querySelectorAll('.formula-slider__slide');
   const btnLeft = formula.querySelector('#formula-arrow_left');
   const btnRight = formula.querySelector('#formula-arrow_right');
+
   // выбранный в tablet
   let formulaItem = null;
   // номер текущего слайда
@@ -25,7 +26,7 @@ export const formula = () => {
         e.target.parentElement : e.target.parentElement.parentElement;
 
       const popup = formulaItem.querySelector('.formula-item-popup');
-      const rotate = (formulaItem.getBoundingClientRect().top > popup.offsetHeight) ? true : false;
+      const rotate = formulaItem.getBoundingClientRect().top > popup.offsetHeight;
 
       formulaItem.classList.add('active-item');
       if (rotate) formulaItem.classList.add('rotate');
@@ -53,15 +54,13 @@ export const formula = () => {
       if (numSlide === 6) btnRight.classList.add('hide');
 
       animate({
-        duration: 400,
-        timingplane: 'easeOutCubic',
+        duration: 500,
+        timingplane: 'easeInOutCubic',
         draw(progress) {
-          // скролл слайдов
           formulaSlider.style.left = preSlide + step * progress + '%';
           if (progress === 1) slides[numSlide - 1].classList.add('active-item');
         }
       });
-
     }
   });
 

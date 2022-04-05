@@ -642,6 +642,13 @@
       "units": "шт",
       "cost": "400",
       "id": "0365277003"
+    },
+    {
+      "type": "dddddddddddddddddddddddddddddd",
+      "name": "user",
+      "units": "sdjsjla",
+      "cost": 612,
+      "id": "rI0WPGN"
     }
   ]
 }
