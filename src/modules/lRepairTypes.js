@@ -46,13 +46,13 @@ export const repairTypes = () => {
     if (block === currentBlock) return;
 
     if (currentBlock) {
-      currentBlock.slides[currentBlock.currentSlide].classList.remove('slide-current');
+      currentBlock.slides[currentBlock.currentSlide].classList.remove('repair-slide-current');
       currentBlock.classList.remove('active');
     }
 
     currentBlock = block;
     currentBlock.classList.add('active');
-    currentBlock.slides[currentBlock.currentSlide].classList.add('slide-current');
+    currentBlock.slides[currentBlock.currentSlide].classList.add('repair-slide-current');
     counterCurrent.textContent = currentBlock.currentSlide + 1;
     counterTotal.textContent = currentBlock.slides.length;
     showButton();
@@ -65,11 +65,11 @@ export const repairTypes = () => {
 
   // навигация слайдов в текущем блоке
   const navSlides = (direction) => {
-    currentBlock.slides[currentBlock.currentSlide].classList.remove('slide-current');
+    currentBlock.slides[currentBlock.currentSlide].classList.remove('repair-slide-current');
     currentBlock.currentSlide = direction > 0 ?
       Math.min(currentBlock.slides.length - 1, currentBlock.currentSlide + 1) :
       Math.max(0, currentBlock.currentSlide - 1);
-    currentBlock.slides[currentBlock.currentSlide].classList.add('slide-current');
+    currentBlock.slides[currentBlock.currentSlide].classList.add('repair-slide-current');
     counterCurrent.textContent = currentBlock.currentSlide + 1;
     showButton();
   };
@@ -84,7 +84,7 @@ export const repairTypes = () => {
       timingplane: 'easeInOutCubic',
       draw(progress) {
         // скролл блоков
-        navSlider.style.left = preBlock - 100 * direction * progress + '%';
+        navSlider.style.left = preBlock + step * progress + '%';
         if (progress === 1) {
           setCurrentBlock(buttonSliders[numBlock + direction]);
         }

@@ -64,4 +64,4 @@ export const formula = () => {
     }
   });
 
-}; // END formul()
+}; // END formula()

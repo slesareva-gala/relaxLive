@@ -1,55 +1,51 @@
 /* Лендинг. Часто задаваемые вопросы */
 "use strict";
 
-export const accordeon = () => {
+import { smoothScroll } from './helpers';
 
-  // ссылки на клавиши аккордеона
-  const accordionKeys = document.querySelectorAll('.accordion li');
+export const accordeon = () => {
+  const accordeon = document.querySelector('.accordion');
+  const accordeonList = [...accordeon.children];
+  let currentIndex = -1;
+
+  // выбор блока
+  const choiceBlock = (block) => {
+    const choiceIndex = accordeonList.findIndex(el => el === block);
+    const cssOpen = 'accordion-more-active';
+    const moreClose = ~currentIndex ? accordeonList[currentIndex].firstElementChild.nextElementSibling : null;
+    const moreOpen = (currentIndex === choiceIndex) ? null : block.firstElementChild.nextElementSibling;
+
+    // закрытие открытого блока
+    if (~currentIndex) {
+      if (currentIndex < choiceIndex) {
+        moreClose.style.transition = "max-height 0s ease-out";
+        window.scrollTo(0, window.scrollY - parseInt(moreClose.style.maxHeight));
+      }
+      accordeonList[currentIndex].classList.remove(cssOpen);
+      moreClose.style.maxHeight = "";
+    }
+
+    if (currentIndex === choiceIndex) {
+      currentIndex = -1;
+
+      // открытие блока
+    } else {
+      block.classList.add(cssOpen);
+      moreOpen.style.maxHeight = moreOpen.scrollHeight + 'px';
+
+      window.setTimeout(() => {
+        smoothScroll(".accordion-more-active", 500);
+        if (~currentIndex) moreClose.style.transition = "";
+        currentIndex = choiceIndex;
+      }, 0);
+
+    }
+  };
 
   // игра на аккордеоне
-  const play = (pressedIndex = -1) => {
-
-    accordionKeys.forEach((key, index) => {
-      // клавиша
-      const keyLi = key.querySelector('.title_block');
-      // содержимое клавиши
-      const keyContent = key.querySelector('.msg');
-
-      // закрытие всех раскрытых содержимых или открытое выбранное
-      if (index !== pressedIndex || keyLi.classList.contains('msg-active')) {
-        keyLi.classList.remove('msg-active');
-        keyContent.style.height = '';
-        keyContent.classList.remove('open');
-
-
-      } else { // для выбранного закрытого
-
-        // раскрываем содержимое по нажатию
-        // для списка  для срабатывания свойства transition из css
-        // нужно точно указать высоту высоту раскрытого блока
-        // keyContent.scrollHeight
-        // для идентификации "открытого" состояния маркируем классом .open
-        keyLi.classList.add('msg-active');
-        keyContent.style.height = keyContent.scrollHeight + 'px';
-        keyContent.classList.add('open');
-      }
-    });
+  const play = (e) => {
+    const head = e.target.closest('h2');
+    if (head) choiceBlock(head.parentElement);
   };
-  // закрываем все при первом открытии страницы
-  play();
-
-  // подключение событий нажатия
-  accordionKeys.forEach((key, index) => {
-    // кнопка клавиши
-    const keyLi = key.querySelector('.title_block');
-    // содержимое клавиши
-    const keyContent = key.querySelector('.msg');
-
-    // подключаем события по нажатию
-    keyLi.addEventListener('click', () => {
-      // отработка текущего и закрытие всех прочих открытых
-      play(index);
-    });
-  });
-
+  accordeon.addEventListener('click', play);
 };

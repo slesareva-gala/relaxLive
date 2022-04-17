@@ -15,10 +15,12 @@ export class Picture {
 
   get mask() { return this._mask; }
 
-  clear() {
-    this._buffer = ''.padEnd(this._mapBuffer.length, this._placeholder);
+  start(value) {
+    this._buffer = value.replace(/[^\d]/g, '')
+      .slice(0, this._mapBuffer.length)
+      .padEnd(this._mapBuffer.length, this._placeholder);
     this._value = this._mask.split('');
-
+    this._buffer.split('').forEach((v, i) => this._value[this._mapBuffer[i]] = v);
     return this._mask;
   }
 
@@ -26,7 +28,7 @@ export class Picture {
     // позиция курсора после введенного символа
     let caret = input.selectionStart;
 
-    if (input.value.trim().length < this._mapBuffer.length) input.value = this.clear();
+    if (!type) input.value = this.start(input.value);
 
     // обычный посимвольный ввод
     if (type === "insertText") {
@@ -134,4 +136,22 @@ export const animate = ({ draw, duration = 1000, timingplane = 'linear' }) => {
     }
   });
 
+};
+
+// плавный скролл по a.href
+export const smoothScroll = (selectors, duration = 1000) => {
+
+  // счетчик прокрученных строк и целевое кол-во строк к прокрутке всё за 1 сек
+  const scrollY = window.scrollY;
+  // необходимо докрутить до начала элемента перехода
+  const transitionHeight = document.querySelector(selectors).getBoundingClientRect().top;
+
+  animate({
+    duration: duration,
+    timingplane: 'easeOutCubic',
+    draw(progress) {
+      // вертикальный скролл документа
+      window.scrollTo(0, scrollY + transitionHeight * progress);
+    }
+  });
 };

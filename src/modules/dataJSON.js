@@ -8,7 +8,7 @@ export class DataJSON {
     } }) {
     this._url = url;
     this._errorMessageResponse = errorMessageResponse;
-    this._headers = headers;    
+    this._headers = headers;
   }
 
   // запрос к базе
@@ -32,8 +32,7 @@ export class DataJSON {
 
     } catch (error) {
       document.preloader.stop();
-      console.error(error.message);
-      return [];
+      throw new Error(this._errorMessageResponse);
     }
   }
 

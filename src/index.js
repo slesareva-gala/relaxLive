@@ -2,35 +2,33 @@
 "use strict";
 
 import { menu } from "./modules/lMenu";
-import { OpenBlock } from "./modules/lOpenBlock";
+import { ModalList } from "./modules/lModalList";
 import { secondPhoneNumber } from "./modules/lSecondPhoneNumber";
-import { maskPhoneNumber } from "./modules/lMaskPhoneNumber";
-import { inputName } from "./modules/lInputName";
 import { addPreloader } from "./modules/preloader";
-import { SendForm } from './modules/lSendForm';
+import { inputForm } from "./modules/lForms";
+import { SendForm } from './modules/lForms';
 import { formula } from './modules/lFormula';
 import { repairTypes } from './modules/lRepairTypes';
 import { repairFull } from './modules/lRepairFull';
-import { portfolioSlider } from './modules/lPortfolioSlider';
+import { portfolioSlider } from './modules/lPortfolio';
 import { reviewsSlider } from './modules/lReviewsSlider';
 import { transparency } from './modules/lTransparency';
 import { accordeon } from './modules/lAccordeon';
 
 menu();
-// подключение сервиса открытия блоков popup show  active
-document.openPopup = new OpenBlock('popup', 'active', 'hide');
+// подключение сервиса открытия/закрытия модальных блоков
+document.modalList = new ModalList('popup', 'active-popup');
 // добавляем прелодер на document
 addPreloader();
 
 secondPhoneNumber();
-maskPhoneNumber();
-inputName();
+inputForm();
 
 // подключение сервиса отправки форм
 // параметры: сервер отправки, дополнительные данные к отправке
+
 document.sendForm = new SendForm({
   url: 'https://jsonplaceholder.typicode.com/posts',
-  errorMessageResponse: 'Технический сбой. Сообщение не отправлено',
   optionals:
   {
     // Получите консультацию от специалиста в удобное для Вас время (тел)
