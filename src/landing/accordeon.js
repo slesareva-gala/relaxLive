@@ -1,7 +1,7 @@
 /* Лендинг. Часто задаваемые вопросы */
 "use strict";
 
-import { smoothScroll } from './helpers';
+import { smoothScroll } from '../modules/helpers';
 
 export const accordeon = () => {
   const accordeon = document.querySelector('.accordion');

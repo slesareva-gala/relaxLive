@@ -1,0 +1,70 @@
+/* CSS Каталого для подгрузки в теневой DOM - TDS-BOX
+   к HTML не подключать
+*/
+
+.icon-sort {
+  display: none;
+  position: absolute;
+  width: .7em;
+  height: .7em;
+  margin-left: .3em;
+
+  background-size: 100% 95%;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-image: url("../images/popup/sorting.svg");
+}
+
+.asc {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.desc {
+  display: inline-block;
+}
+
+.mini-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 320px) {
+  .mini-cell {
+    width: 160px;
+  }
+}
+.mini-title {
+  font-size: .8em;
+  line-height: 10px;
+  color: rgba(100,100,100,.8);
+}
+.mini-name {
+  height: 26px;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.mini-block {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mini-units,
+.mini-cost {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.mini-title-units {
+  width: 60px;
+}
+
+.mini-title-cost {
+  display: block;
+  width: 50px;
+}
+
+

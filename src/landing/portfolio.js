@@ -1,7 +1,7 @@
 /* Лейдинг. Слайдер портфолио */
 "use strict";
 
-import { animate, smoothScroll } from './helpers';
+import { animate, smoothScroll } from '../modules/helpers';
 
 /* Слайдер карточек */
 const portfolioPopup = (callingBlock, calbackHarmonization) => {

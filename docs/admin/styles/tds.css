@@ -1,34 +1,23 @@
 ﻿/* стили слайдера табличных данных (tabular data slider) */
 
 TDS-BOX#tds {
-
-  /* изменяемые стили слайдера ( tds ): */
-  /* - цвет сетки таблицы, по-умолч. rgb(218,218,218) */
-  /*  --tds-gap-color: green; /* rgb(218,218,218) ;
-  /* - цвет ограничительной линии фиксированных частей, по-умолч. rgb(80,135,215) */
-  /*  --tds-fixed-color: blue; /* var(--tds-gap-color) ;
-  /* - стиль ячейки данных, по-умолч. "background-color: rgb(255,255,255);" */
+  /* - стиль ячейки данных */
   --tds-cell-data: "background-color: white;"
     "padding: 0 10px;";
-  /* - стиль ячейки заголовка, по-умолч. "text-align: center;" + --tds-cell-data */
+  /* - стиль ячейки заголовка */
   --tds-cell-heading: "padding: 8px 10px;"
     "text-align: left;"
     "color: var(--firm_color);"
     "background: linear-gradient( rgb(210, 210, 210), rgb(250, 250, 250) );"
     "font-family: 'Open Sans', sans-serif;"
     "font-size: 0.9em;";
-  /* - стиль ячейки подвала, по-умолч. --tds-cell-data */
-  /*  --tds-cell-footing: "background: linear-gradient( rgb(210, 220, 230), rgb(250, 250, 250) );";
-  /* - стиль курсора вне фокуса, по-умолч. "outline: 1px solid rgb(80,135,215);"
-                                                  "outline-offset: -1px;"  */
+  /* - стиль курсора вне фокуса */
   --tds-cursor-focusout: "";
-
-  /* - стиль курсора в фокусе, по-умолч. "filter: brightness( 80% )"  */
+  /* - стиль курсора в фокусе */
   --tds-cursor-focusin: "";
-  /* - стиль строки курсора, по-умолч. "filter: brightness( 90% )"  */
-  --tds-cursor-line: "background: rgba(127,255,100, 0.5);";
-  /* - стиль колонки в тени, по-умолч. "filter: brightness( 75%);" */
-  /*  --tds-col-shadow: "filter: brightness( 75%);";*/
+  /* - стиль строки курсора  */
+  --tds-cursor-line: "font-weight: bold;"
+      "background: linear-gradient(0deg, #F48922 0%, #FFB015 4%, #FFFFFF 4%, #FFFFFF 100%);";
 
   position: relative;
   color: black;

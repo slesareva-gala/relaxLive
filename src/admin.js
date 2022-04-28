@@ -2,13 +2,13 @@
 
 "use strict";
 
-import { authorization } from "./modules/aAuthorization";
+import { authorization } from "./admin/authorization";
 import { addPreloader } from "./modules/preloader";
 import { DataJSON } from "./modules/dataJSON";
-import { table } from "./modules/aTable";
-import { tableInit } from "./modules/aTableInit";
-import { listType } from "./modules/aListType";
-import { itemCard } from "./modules/aItemCard";
+import { table } from "./admin/table";
+import { tableInit } from "./admin/tableInit";
+import { listType } from "./admin/listType";
+import { itemCard } from "./admin/itemCard";
 
 
 const site = window.location;

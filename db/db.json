@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "login": "user",
-      "password": "12345678"
+      "login": "admin",
+      "password": "123"
     }
   ],
   "items": [
@@ -642,13 +642,6 @@
       "units": "шт",
       "cost": "400",
       "id": "0365277003"
-    },
-    {
-      "type": "dddddddddddddddddddddddddddddd",
-      "name": "user",
-      "units": "sdjsjla",
-      "cost": 612,
-      "id": "rI0WPGN"
     }
   ]
 }

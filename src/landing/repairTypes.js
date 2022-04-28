@@ -1,7 +1,7 @@
 /* Лейдинг. Слайдер Видов ремонтов */
 "use strict";
 
-import { animate } from './helpers';
+import { animate } from '../modules/helpers';
 
 export const repairTypes = () => {
   const repairTypes = document.getElementById('repair-types');

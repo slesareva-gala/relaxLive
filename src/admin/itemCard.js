@@ -1,7 +1,7 @@
 /* Админ-панель. Карточка товара */
 "use strict";
 
-import { putTogetherListType, putTogetherType } from "./aListType";
+import { putTogetherListType, putTogetherType } from "./listType";
 
 // очистка шапки таблицы от ярлычков сортировки
 export const cleaningHeader = () => {

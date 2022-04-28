@@ -2,7 +2,7 @@
 "use strict";
 
 // очистка шапки таблицы от ярлычков сортировки
-import { cleaningHeader } from "./aItemCard";
+import { cleaningHeader } from "./itemCard";
 
 // создание списка типов услуг
 export const putTogetherListType = () => {

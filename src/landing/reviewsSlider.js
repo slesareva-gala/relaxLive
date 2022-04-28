@@ -1,7 +1,7 @@
 /* слайдер отзывов */
 "use strict";
 
-import { animate } from './helpers';
+import { animate } from '../modules/helpers';
 
 export const reviewsSlider = () => {
 

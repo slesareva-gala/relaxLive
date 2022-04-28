@@ -27,7 +27,7 @@
   position: absolute;
   display: inline-block;
   top: 0;
-  background-color: #337ab7;
+  background: linear-gradient(90deg, #F48922 0%, #FFB015 100%);
   border-radius: 100%;
   width: 35px;
   height: 35px;

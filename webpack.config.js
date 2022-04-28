@@ -3,9 +3,10 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
+    indexPre: './indexPre.js',
     index: './index.js',
-    admin0: './admin0.js',
-    admin1: './admin1.js',
+    adminPre: './adminPre.js',
+    admin: './admin.js',
   },
   output: {
     filename: 'js/[name].js',

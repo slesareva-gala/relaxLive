@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "watch": "webpack --watch --mode=development",   
-    "start": "webpack serve --mode=development --open", 
-    "server": "json-server db/db.json --port=4545"
+    "watch": "webpack --watch --mode=development",
+    "start": "webpack serve --mode=development --open",
+    "server": "json-server db/db.json --port=4545",
+    "json:server": "json-server --watch db.json",
+    "json:server:remote": "json-server http://jsonplaceholder.typicode.com/db"
   },
   "author": "Gala Slesareva",
   "license": "ISC",

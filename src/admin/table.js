@@ -1,7 +1,7 @@
 /* Админ-панель. Список услуг */
 "use strict";
 
-import { delCookie, getCookie } from "./aCookie";
+import { delCookie, getCookie } from "./cookie";
 
 export const table = () => {
 

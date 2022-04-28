@@ -1,7 +1,7 @@
 /* Лендинг. Формула успшности */
 "use strict";
 
-import { animate } from './helpers';
+import { animate } from '../modules/helpers';
 
 export const formula = () => {
   const formula = document.querySelector('.formula');

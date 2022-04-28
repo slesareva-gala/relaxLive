@@ -1,8 +1,8 @@
 /* Лейдинг. Заполнение и отправка форм  */
 "use strict";
 
-import { DataJSON } from "./dataJSON";
-import { Picture } from "./helpers";
+import { DataJSON } from "../modules/dataJSON";
+import { Picture } from "../modules/helpers";
 
 export const inputForm = () => {
   const body = document.querySelector('body');

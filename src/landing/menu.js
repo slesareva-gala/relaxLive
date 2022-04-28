@@ -2,7 +2,7 @@
 /* Лендинг.  Меню */
 "use strict";
 
-import { animate, smoothScroll } from './helpers';
+import { smoothScroll } from '../modules/helpers';
 
 export const menu = () => {
 

@@ -270,11 +270,14 @@ export const tabularDataSlider = () => {
     } // END shadow()
 
     // скрыть столбец
-    hidden() {
-      const tds = this.tds, listX = tds.listX, x = tds.x, colNum = listX[x],
+    hidden(colNum) {
+      const tds = this.tds, listX = tds.listX,
+        x = typeof (colNum) === 'number' ? listX.indexOf(colNum) : tds.x,
         xRight = tds.xRight, xLeft = tds.xLeft;
 
-      if (x >= xRight || x < xLeft || xRight - xLeft > 1) {
+      if (x < 0);
+      else if (x >= xRight || x < xLeft || xRight - xLeft > 1) {
+
         listX.splice(x, 1);
         let renew;
         if ((renew = x >= xRight)) tds.fixedRight--;
@@ -824,6 +827,9 @@ export const tabularDataSlider = () => {
       client.tdsHeight = 0;
       tds.links.client = client;
 
+      // для подключения пользовательского отслеживания изменения размеров
+      tds.resize = (w, h) => { };
+
       // изменение размера клиентского блока:
       tds.resizeObserver = new window.ResizeObserver(entries => {
         let dWidth = 0, dHeight = 0;
@@ -846,6 +852,10 @@ export const tabularDataSlider = () => {
           if (tds.render > 0) {  // встроено с use || add
             if (dWidth) tds.controlCol(false, -1, dWidth);
             if (dHeight) tds.controlRow(true, dHeight);
+
+            if (dWidth || dHeight) window.setTimeout(() => {
+              tds.resize(width, height);
+            }, 0);
           }
         });
       });
@@ -1053,6 +1063,8 @@ export const tabularDataSlider = () => {
       if (tds.render > 0) {
         // устанавливаем количество записей и указатель на первую запись
         tds.lgxy.param.group = { yQty: value.length, y: 0 };
+        // обновление содержимого слайдера
+        tds.updateData();
       }
     }
     get data() { return this._data; }
@@ -1291,7 +1303,8 @@ export const tabularDataSlider = () => {
             rows.right.append(...list.add.right);
 
             // обновляем содержимое ячеек вставленных строк при расширении окна
-            if (dHeight) tds.updateData(preQtyRows - list.add.slide.length, preQtyRows - 1);
+            // или изменении высоты заголовка/строк/подвала
+            tds.updateData(preQtyRows - list.add.slide.length, preQtyRows - 1);
           }
         }
 
@@ -2052,8 +2065,17 @@ export const tabularDataSlider = () => {
   contain: layout;
   ${cssData}
 }
+.-tds-data .-tds-cell[hidden] {
+  display: none;
+}
 .-tds-heading-col { ${cssHeading} }
+.-tds-heading-col[hidden] {
+  display: none;
+}
 .-tds-footing-col { ${cssFooting} }
+.-tds-footing-col[hidden] {
+  display: none;
+}
 
 .-tds-data .-tds-line .-tds-cell { ${cssLine} }
 .-tds-data .-tds-line .-tds-col-shadow, .-tds-col-shadow {

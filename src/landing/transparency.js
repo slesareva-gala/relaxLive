@@ -1,7 +1,7 @@
 /* Лейдинг. Блок с документами  */
 "use strict";
 
-import { animate, smoothScroll } from './helpers';
+import { animate, smoothScroll } from '../modules/helpers';
 
 // модальный cлайдер документов
 const transparencyPopup = (callingBlock, calbackHarmonization) => {

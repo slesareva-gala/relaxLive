@@ -301,7 +301,8 @@ export class LGXY extends HTMLElement {
         `
 :host {
   --color-xy: var( --lgxy-color-xy, transparent ) !important;
-  --color-level: var( --lgxy-color-level, rgba(100,100,100,0.3) ) !important;
+  --color-level: var( --lgxy-color-level, rgba(100,100,100,0.3) );
+  --color-hover: var( --lgxy-color-hover, rgba(100,100,100,0.7) ) !important;
   --wxy:${isX || isY ? `calc( var( --lgxy-width, 0.8vw ) + 0px)` : `0px`} !important;
   --wx: ${isX ? `var( --wxy )` : `0px`} !important;
   --wy: ${isY ? `var( --wxy )` : `0px`} !important;
@@ -328,6 +329,9 @@ export class LGXY extends HTMLElement {
   width:  calc( 100% - var(--wy) );
   height: calc( 100% - var(--wx) );
   contain: size layout;
+}
+:host(:hover) {
+  --color-level: var(--color-hover);
 }`;
 
     }

@@ -1,7 +1,7 @@
-/* Админ-панель. Точка входа до HTML */
+/* Админ-панель. Точка входа до загрузки HTML */
 
 import { tabularDataSlider } from "./modules/tabularDataSlider";
-import { getCookie } from "./modules/aCookie";
+import { getCookie } from "./admin/cookie";
 
 const site = window.location;
 const cookie = getCookie();

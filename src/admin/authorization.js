@@ -1,7 +1,7 @@
 /* Админ-панель. Авторизация */
 "use strict";
 
-import { setCookie } from "./aCookie";
+import { setCookie } from "./cookie";
 
 export const authorization = (dayAgeCookie = 30) => {
   const forma = document.querySelector("form");
