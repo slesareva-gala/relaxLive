@@ -8,6 +8,7 @@ export const menu = () => {
 
   // блок меню
   const menu = document.querySelector('.popup-menu');
+  const menuDialog = menu.querySelector('.popup-dialog-menu');
 
   document.querySelector('body').addEventListener('click', (e) => {
     let itemMenu = null, itemPopup, toTop;
@@ -22,7 +23,17 @@ export const menu = () => {
 
       e.preventDefault();
 
-      menu.classList.toggle('active-popup');
+      if (menu.classList.contains('active-popup')) {
+        menuDialog.classList.remove('active-menu');
+        window.setTimeout(() => {
+          menu.classList.remove('active-popup');
+        }, 1000);
+      } else {
+        menu.classList.add('active-popup');
+        window.setTimeout(() => {
+          menuDialog.classList.add('active-menu');
+        }, 0);
+      }
 
     } else if ((toTop = e.target.closest('.button-footer'))) {
 

@@ -18,8 +18,8 @@ const catalogListInit = (catalogList) => {
         widthMin: 343,
         widthMax: 343,
         when: x => (true),
-        head: () => `<div class="column-head">Виды работ
-          <span class="icon-sort"></span></div>`,
+        head: () => `<div class="column-head">Виды работ` +
+          `<span class="icon-sort">&#129093</span></div>`,
         cell: 'name'
       },
       {
@@ -28,8 +28,8 @@ const catalogListInit = (catalogList) => {
         widthMin: 100,
         widthMax: 100,
         when: x => (true),
-        head: () => `<div class="column-head">Еденицы измерения
-          <span class="icon-sort"></span></div>`,
+        head: () => `<div class="column-head"><div class="min-width">Единицы измерения</div>` +
+          `<span class="icon-sort">&#129093</span></div>`,
         cell: 'units',
         cellSay: x => `<span class="units">${x.units}</span>`,
       },
@@ -39,8 +39,8 @@ const catalogListInit = (catalogList) => {
         widthMin: 100,
         widthMax: 100,
         when: x => (true),
-        head: () => `<div class="column-head">Цена за единицу
-          <span class="icon-sort"></span></div>`,
+        head: () => `<div class="column-head"><div class="min-width">Цена за единицу</div>` +
+          `<span class="icon-sort">&#129093</span></div>`,
         cell: x => +(x.cost + '').replace(/[^\d]+/g, ''),
         cellSay: x => `<span class="cost">${x.cost} руб</span>`,
       },
@@ -51,19 +51,19 @@ const catalogListInit = (catalogList) => {
         widthMax: 300,
         when: x => (true),
         head: ` `,
-        cellSay: x => `<div class="mini-cell">
-        <div class="mini-title">вид работы:</div>
-        <div class="mini-name">${x.name}</div>
-        <div  class="mini-block">
-          <div class="mini-units">
-            <div class="mini-title mini-title-units">единица измерения:</div>
-            <div>${x.units}</div>
-          </div>
-          <div class="mini-cost">
-            <div class="mini-title mini-title-cost">цена за единицу:</div>
-            <div>${x.cost} руб</div>
-          </div>
-        </div></div>`,
+        cellSay: x => `<div class="mini-cell">` +
+          `<div class="mini-title">вид работы:</div>` +
+          `<div class="mini-name">${x.name}</div>` +
+          `<div class="mini-block">` +
+          `<div class="mini-units">` +
+          `<div class="mini-title mini-title-units">единица измерения:</div>` +
+          `<div>${x.units}</div>` +
+          `</div>` +
+          `<div class="mini-cost">` +
+          `<div class="mini-title mini-title-cost">цена за единицу:</div>` +
+          `<div>${x.cost} руб</div>` +
+          `</div>` +
+          `</div></div>`,
         hidden: true
       }
     ]
@@ -185,12 +185,12 @@ export const catalog = () => {
     showButton();
   };
 
-  // перечень видов работя
-  const orderCatalog = (data) => {
+  // перечень видов работ
+  const orderCatalog = () => {
     const orderCatalog = new Set();
     let htmlTypeItem = ``;
 
-    data.forEach(record => orderCatalog.add(record.type));
+    catalog.data.forEach(record => orderCatalog.add(record.type));
     [...orderCatalog].sort().forEach((name, index) => {
       htmlTypeItem += `<button class="button_o popup-repair-types-nav__item popup__item_${index + 1} ">${name}
         <svg width="259" height="46" fill="none" viewBox="0 0 259 46" preserveAspectRatio="none">
@@ -241,6 +241,7 @@ export const catalog = () => {
   // запрос на сортировку
   catalogList.shadowRoot.addEventListener('click', (e) => {
     const columnHead = e.target.closest('.column-head');
+
     if (columnHead) sortCard(columnHead);
   });
 
@@ -254,8 +255,8 @@ export const catalog = () => {
     // запоминаем данные каталога
     catalog.data = data;
 
-    // формируем перечень видов работя
-    orderCatalog(data);
+    // формируем перечень видов работ
+    orderCatalog();
   });
 
 }; // END catalog()

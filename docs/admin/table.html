@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/tds.css">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/preloader.css">
 
   <script src="../../js/adminPre.js"></script>
   <script src="../../js/admin.js" defer></script>
@@ -31,31 +31,21 @@
         <div class="table_header-filter">
           <input type="text" class="input_filter_name" placeholder="поиск по виду работ" />
           <div class="button_filter filter_on" title="искать вид работ">&#9685</div>
-          <div class="button_filter filter_off" title="отменить поиск">&#8861;</div>
+          <div class="button_filter filter_off" title="отменить поиск">&#11198;</div>
         </div>
         <div class="table_header-right">
           <button class="button btn-addItem">
-            <span class="svg_ui">
-              <svg class="icon-btn-addItem">
-                <use xlink:href="./img/sprite.svg#plus"></use>
-              </svg>
-            </span><span>Добавить Услугу</span>
+            <span class="svg_ui">&#10753;</span><span>Добавить Услугу</span>
           </button>
         </div>
       </div>
-
-      <tds-box id="tds" param=""></tds-box>
+      <tds-box id="catalog"></tds-box>
     </div>
   </main>
-
   <div class="modal__overlay" id="modal">
     <div class="modal">
       <button class="button button__close">
-        <span class="svg_ui">
-          <svg class="icon__close">
-            <use xlink:href="./img/sprite.svg#close_modal"></use>
-          </svg>
-        </span>
+        <span class="svg_ui">&#10005;</span>
       </button>
       <h3 class="modal__header">Добавление новой услуги</h3>
       <!--<h3 class="modal__header">Изменение услуги</h3>-->

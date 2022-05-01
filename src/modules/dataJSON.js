@@ -2,11 +2,12 @@
 "use strict";
 
 export class DataJSON {
-  constructor({ url, errorMessageResponse = 'Ошибка сервера.',
+  constructor({ url, urlDemo, errorMessageResponse = 'Ошибка сервера.',
     headers = {
       "Content-Type": "application/json",
     } }) {
     this._url = url;
+    this._urlDemo = urlDemo;
     this._errorMessageResponse = errorMessageResponse;
     this._headers = headers;
   }
@@ -14,6 +15,7 @@ export class DataJSON {
   // запрос к базе
   async request(method = 'GET', app = '', data = {}) {
     document.preloader.start();
+
     try {
       const options = {
         method: method,
@@ -22,10 +24,17 @@ export class DataJSON {
       if ('POST PATCH PUT'.includes(method))
         options.body = JSON.stringify(data);
 
-      const response = await fetch(this._url + app, options);
-      if (!response.ok) {
-        throw new Error(this._errorMessageResponse);
+      let response;
+      try {
+        response = await fetch(this._url + app, options);
+        if (!response.ok) throw new Error(this._errorMessageResponse);
+      } catch (error) {
+        response = await fetch(this._urlDemo + app, options);
+        if (!response.ok) throw new Error(this._errorMessageResponse);
+        console.error('Страница переключена на демонстрационный режим');
+        document.taskDemo = 1;
       }
+
       const result = await response.json();
       document.preloader.stop();
       return result;

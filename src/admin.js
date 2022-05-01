@@ -1,15 +1,10 @@
 /* Админ-панель. Точка входа по defer после HTML */
-
 "use strict";
 
-import { authorization } from "./admin/authorization";
 import { addPreloader } from "./modules/preloader";
 import { DataJSON } from "./modules/dataJSON";
-import { table } from "./admin/table";
-import { tableInit } from "./admin/tableInit";
-import { listType } from "./admin/listType";
-import { itemCard } from "./admin/itemCard";
-
+import { authorization } from "./admin/authorization";
+import { catalog } from "./admin/catalog";
 
 const site = window.location;
 
@@ -18,25 +13,21 @@ addPreloader();
 
 if (site.pathname.includes('table.html')) {
   // подключение сервиса данных
-  document.dataItems = new DataJSON({
+  document.taskDemo = 0;
+  document.dataСatalog = new DataJSON({
     url: 'http://localhost:4545/items',
+    urlDemo: '../dbDemo/items.json',
     errorMessageResponse: 'Сервер базы данных недоступен. Действие отменено.'
   });
-  tableInit();
-  // список услуг
-  listType();
-  // таблица
-  table();
-  // карточка товара
-  itemCard();
-
+  // каталог услуг
+  catalog();
 } else {
   // подключение сервиса данных
   document.dataAdmin = new DataJSON({
     url: 'http://localhost:4545/users',
+    urlDemo: '../dbDemo/users.json',
     errorMessageResponse: 'Сервер регистрации недоступен. Аутентификация невозможна.'
   });
   // авторизация, параметры: количествоДнейХраненияКуки
   authorization(30);
 }
-

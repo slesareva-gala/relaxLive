@@ -61,8 +61,10 @@ formula();
 repairTypes();
 
 // подключение сервиса данных каталога
+document.taskDemo = 0;
 document.dataСatalog = new DataJSON({
   url: 'http://localhost:4545/items',
+  urlDemo: './dbDemo/items.json',
   errorMessageResponse: 'Сервер базы данных недоступен. Запрос отменен.'
 });
 catalog();
@@ -70,3 +72,4 @@ portfolioSlider();
 reviewsSlider();
 transparency();
 accordeon();
+
