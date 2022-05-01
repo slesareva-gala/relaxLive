@@ -99,6 +99,11 @@ export const transparency = () => {
 
   // активизация текущего слайда
   const setCurrent = () => {
+
+    // для дескопной версии убираем смещение
+    if (!leftButton.offsetWidth && !rightButton.offsetWidth)
+      document.transparencyCurrentSlide = 0;
+
     slider.style.left = -document.transparencyCurrentSlide * 100 + '%';
     showButton();
   };
@@ -139,8 +144,11 @@ export const transparency = () => {
   transparency.addEventListener('click', transparencySlider);
 
   // первоначальная инициалиазия
-  // текущий слайд
-  document.transparencyCurrentSlide = 0;
   // нумерация слайдов
   slides.forEach((slide, index) => slide.number = index);
+  // текущий слайд
+  document.transparencyCurrentSlide = 0;
+  // активизация текущего слайда
+  setCurrent();
+
 };
