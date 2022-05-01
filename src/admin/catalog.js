@@ -166,7 +166,6 @@ export const catalog = () => {
     typeItem.selectedIndex = 0;
   };
 
-
   // очистка данных карточки услуги
   const clearCard = () => {
     inputs.forEach(input => {
@@ -277,19 +276,25 @@ export const catalog = () => {
   const deleteCard = () => {
     const record = catalogList.records.current();
     const deleteCard = () => {
+      const recordType = record.data.type;
+
       // удалим в образе данных
       catalog.data.splice(catalog.data.findIndex(elem => elem.id === record.data.id), 1);
-      // если удалили последнюю в отборе
-      if (catalogList.yMax === 0) {
+
+      // удалим одну запись из группы данных
+      if (catalog.data.find(elem => elem.type === recordType)) {
+        catalogList.records.delete();
+      }
+
+      // удалили последнюю в группе
+      else {
         // освежим список типов услуг
         orderCatalog();
         // обновим полный список
         setCurrentData();
-      } else {
-        // удалим  запись в слайдере данных
-        catalogList.records.delete();
       }
     };
+
     if (document.taskDemo) deleteCard();
     else document.dataСatalog.delete(record.data.id).then(rec => {
       deleteCard();
@@ -410,7 +415,8 @@ export const catalog = () => {
 
 
   // логин админа
-  document.querySelector('.admin-exit').prepend(getCookie());
+  const admin = document.querySelector('.admin-exit');
+  admin.prepend(getCookie());
 
   // первоначальная настройка
   catalogListInit(catalogList);
@@ -421,6 +427,9 @@ export const catalog = () => {
     orderCatalog();
     // создание списка услуг в соответсвии с выборанным типом
     setCurrentData();
+
+    // признак демо-режима
+    if (document.taskDemo) admin.classList.add('demo');
   });
 
 }; // END catalog
