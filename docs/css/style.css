@@ -51,7 +51,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
   scrollbar-color: #D6D0C5;
 }
 
-
 .scroll-live::-webkit-scrollbar-track {
   background: #D6D0C5;
   border-radius: 10px;
@@ -1936,9 +1935,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
   overflow: hidden;
 }
 
-
 .transparency-slider-wrap .row {
-  position: relative;
   padding-top: 1.5em;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -1948,6 +1945,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
 
 @media (max-width: 1024px) {
   .transparency-slider-wrap .row {
+    position: relative;
     width: 300%;
     justify-content: normal;
     flex-wrap: nowrap;
@@ -4863,7 +4861,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
   stroke: rgb(243, 238, 233);
   fill: rgb(243, 238, 233);
 }
-
 
 @media (max-width: 575px) {
   .close-consultation svg path {

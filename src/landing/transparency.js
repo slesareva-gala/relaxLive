@@ -99,11 +99,6 @@ export const transparency = () => {
 
   // активизация текущего слайда
   const setCurrent = () => {
-
-    // для дескопной версии убираем смещение
-    if (!leftButton.offsetWidth && !rightButton.offsetWidth)
-      document.transparencyCurrentSlide = 0;
-
     slider.style.left = -document.transparencyCurrentSlide * 100 + '%';
     showButton();
   };
