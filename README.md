@@ -22,8 +22,8 @@
 [демо лендинг](https://slesareva-gala.github.io/relaxLive/)
 
 [демо админ-панель](https://slesareva-gala.github.io/relaxLive/admin/)
-логин:  _admin_
-пароль: _123_
+логин:  **_admin_** 
+пароль: **_123_**
 
 **Примечания**
 - При отсутствии установленного json-server на localhost 4545 и связанного с файлом db/db.json из проекта (например, 
